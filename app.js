@@ -8,4 +8,13 @@ $(document).ready(function () {
       message: $('#message').val()
     });
   });
+  messagesRef.on('child_added', function (snapshot) {
+    var message = snapshot.val();
+    $('.messages').append('<li>' +
+      message.username
+      + ' said: '
+      + message.message
+      + '</li>'
+    );
+  });
 });
